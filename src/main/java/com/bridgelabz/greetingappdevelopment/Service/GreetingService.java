@@ -1,19 +1,19 @@
 package com.bridgelabz.greetingappdevelopment.Service;
 
-
-import com.bridgelabz.greetingappdevelopment.Model.Greeting;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
-public class GreetingService implements IGreetingService {
-    private static final String template = "Hello world";
-    private final AtomicLong counter = new AtomicLong();
+public class GreetingService {
+    public String getMessage() {
+        return "Hello World";
+    }
 
+    public String getGreetingMessage(String firstName, String lastName) {
+        return "Hello " + firstName + "" + lastName;
+    }
 
-    @Override
-    public Greeting greetingMessage() {
-        return new Greeting(counter.incrementAndGet(), String.format(template));
+    public String postMessage(String firstName, String lastName) {
+        return "Hello " + firstName + "" + lastName;
     }
 }
