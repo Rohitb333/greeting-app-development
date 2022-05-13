@@ -30,4 +30,9 @@ public class GreetingService {
 //        repository.save(newGreeting);
         return newGreeting;
     }
+
+    public String getData(Integer id) {
+        User newGreeting = repository.getById(id);
+        return newGreeting.getContent();
+    }
 }

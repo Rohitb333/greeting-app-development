@@ -1,4 +1,5 @@
 package com.bridgelabz.greetingappdevelopment.Model;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -43,4 +44,7 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getContent() {
+        return getContent();
+    }
 }

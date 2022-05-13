@@ -12,8 +12,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class GreetingController {
-    private static final String template = "Hello ";
-    private static final AtomicLong counter = new AtomicLong();
+    private static final String template = "Hello %s";
+    private static AtomicLong counter = new AtomicLong();
 
     @Autowired
     GreetingService greetingService;
@@ -39,8 +39,8 @@ public class GreetingController {
     }
 
     @GetMapping("/getGreetingMessage")
-    public ResponseEntity<String> getGreetingMessage(@RequestParam(value = "firstName", defaultValue = "World") String firstName, @RequestParam(value = "lastName", defaultValue = "") String lastName) {
-        return new ResponseEntity<String>(greetingService.getGreetingMessage(firstName, lastName), HttpStatus.OK);
+    public String getGreetingMessage (@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName) {
+        return greetingService.getGreetingMessage(firstName,lastName);
     }
 
     @PostMapping("/post")
@@ -51,5 +51,10 @@ public class GreetingController {
     @PostMapping("/saveGreeting")
     public ResponseEntity<Greeting> saveGreeting(@RequestBody Greeting greeting) {
         return new ResponseEntity<Greeting>(greetingService.saveMessage(greeting), HttpStatus.OK);
+    }
+
+    @GetMapping("/findGreeting")
+    public ResponseEntity<String> findGreeting(@RequestParam Integer id) {
+        return new ResponseEntity<String>(greetingService.getData(id), HttpStatus.OK);
     }
 }
