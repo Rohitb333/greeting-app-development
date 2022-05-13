@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class GreetingController {
-    private static final String template = "Hello %s";
+    private static final String template = "Hello";
     private static AtomicInteger counter = new AtomicInteger();
 
     @Autowired
@@ -69,5 +69,10 @@ public class GreetingController {
     @PutMapping("/editGreetingById/{id}")
     public ResponseEntity<Greeting> editGreeting(@RequestParam String content, @PathVariable Integer id) {
         return new ResponseEntity<Greeting>(greetingService.editData(id, content), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteGreetingById/{id}")
+    public ResponseEntity<String> deleteGreetingById(@PathVariable Integer id) {
+        return new ResponseEntity<String>(greetingService.deleteDataById(id), HttpStatus.OK);
     }
 }
