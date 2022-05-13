@@ -3,6 +3,11 @@ package com.bridgelabz.greetingappdevelopment.Model;
 public class Greeting {
     private long id;
     private String content;
+
+    public Greeting(String format) {
+
+    }
+
     public long getId() {
         return id;
     }
